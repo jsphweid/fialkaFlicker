@@ -7,14 +7,14 @@
 
         <div>
             <p>Initially uses 1 black, 1 white, then 1 video</p>
-            <button onclick="toggleFlicker()">"--------TOGGLE FLICKER--------"</button>
+            <button onclick="flick.toggleFlicker()">"--------TOGGLE FLICKER--------"</button>
             <br><br>
             <form id="myForm" style="visibility: hidden">
                 Black Frames in each Cycle: <input type="number" name="bl" value=1><br>
                 White Frames in each Cycle: <input type="number" name="wh" value=1><br>
                 Video Frames in each Cycle: <input type="number" name="vi" value=1><br><br>
 
-                <input type="button" onclick="updateFlick()" value="Update">
+                <input type="button" onclick="flick.updateFlick()" value="Update">
             </form>
         </div>        
 
