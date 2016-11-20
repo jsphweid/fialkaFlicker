@@ -1,0 +1,21 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Flicker Control Panel
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            <button (click)="startFlicker()">Toggle Flicker</button><br><br>
+            <p>Black Count
+            <input type="number" min="0" step="1"
+                [ngModel]="blackCount" (ngModelChange)="update('blackCount',$event)"></p>
+            <p>White Count
+            <input type="number" min="0" step="1"           
+               [ngModel]="whiteCount" (ngModelChange)="update('whiteCount',$event)"></p>
+
+            <p>vid Count
+            <input type="number" min="0" step="1" 
+                [ngModel]="vidCount" (ngModelChange)="update('vidCount',$event)"></p>
+
+        </div>
+    </div>
+</div>
