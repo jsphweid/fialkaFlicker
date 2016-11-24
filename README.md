@@ -17,9 +17,10 @@ I'd like to be able to:
  - pick any video (from youtube perhaps?)
  - export said video (probably illegal if using youtube?)
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Development Environment
+ -`git clone https://github.com/jsphweid/fialkaFlicker.git` clone repo to folder
+ -`npm install` to download dependencies
+ - Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+ - Run `ng build --prod --base-href "/fialkaFlicker/" --aot false` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Production Build
 
-Run `ng build --prod --base-href "/fialkaFlicker/" --aot false` to build the project. The build artifacts will be stored in the `dist/` directory.
