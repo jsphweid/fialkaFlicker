@@ -1,5 +1,5 @@
 import { Component, OnChanges, Input, SimpleChange } from '@angular/core';
-import { FlickerCycleService} from '../flicker-cycle.service'
+import { FlickerCycleService } from '../flicker-cycle.service'
 
 @Component({
 	selector: 'app-flicker-control',

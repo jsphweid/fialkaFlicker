@@ -7,7 +7,10 @@ import { ISlideChunk } from './slideChunk';
 // I'm not in a hurry to change currently
 @Injectable()
 export class FlickerCycleService {
-    flick:any;
+    flick: any;
+    downloadLinkForVid: string;
+    sketch: any;
+
     constructor() {
         var _this = this;
         var vid;
@@ -15,7 +18,8 @@ export class FlickerCycleService {
         var p5Canvas;
         var w = 640,
             h = 480;
-        var downloadLinkForVid = 'https://dl.dropboxusercontent.com/u/67477162/perm/vidsForSites/dance.mp4';
+        this.downloadLinkForVid = "";
+        // var downloadLinkForVid = 'https://dl.dropboxusercontent.com/u/67477162/perm/vidsForSites/dance.mp4';
 
         this.flick = {
 
@@ -53,7 +57,7 @@ export class FlickerCycleService {
 
 
         // ===================  p5js  ===================== //
-        var sketch = function(p) {
+        this.sketch = function(p) {
 
             p.setup = function () {
 
@@ -66,7 +70,7 @@ export class FlickerCycleService {
                 p.text("loading video...", 10, 30);
 
                 // load video
-                vid = p.createVideo([downloadLinkForVid]); // get vid
+                vid = p.createVideo([this.downloadLinkForVid]); // get vid
 
                 // hide default video behavior
                 vid.hide();
@@ -114,7 +118,7 @@ export class FlickerCycleService {
                 // image(vid, 0, 0);
             }
         };
-        let win: any = window;
-        new win.p5(sketch);
+        // this.win: any = window;
+        // new win.p5(sketch);
     }
 }

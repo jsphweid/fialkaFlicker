@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
+import FileDroppa from 'file-droppa'
+
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { FlickerControlComponent } from './flicker-control/flicker-control.component';
@@ -20,6 +22,7 @@ import { FlickerCycleService } from './flicker-cycle.service';
     AboutComponent,
   ],
   imports: [
+    FileDroppa,
     BrowserModule,
     FormsModule,
     HttpModule,
