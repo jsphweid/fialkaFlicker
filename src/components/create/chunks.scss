@@ -1,0 +1,27 @@
+.ff-chunks {
+  border: 1px solid black;
+}
+
+.ff-chunk {
+  height: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 8px 0 8px 0;
+  display: flex;
+  align-items: center;
+
+  svg {
+    padding: 8px 0;
+  }
+
+  li {
+    float: left;
+    margin: 0 16px;
+  }
+}
+
+.ff-chunk-grab {
+  height: 100%;
+  margin: 0 !important;
+  padding: 0 8px;
+}
