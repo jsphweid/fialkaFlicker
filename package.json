@@ -18,6 +18,7 @@
     "@types/isomorphic-fetch": "0.0.34",
     "@types/react-beautiful-dnd": "^7.1.2",
     "@types/react-icons": "^2.2.6",
+    "@types/react-select": "^2.0.10",
     "axios": "^0.18.0",
     "gatsby-link": "^2.0.4",
     "gatsby-plugin-sass": "^2.0.1",
@@ -31,6 +32,7 @@
     "react-apollo": "^2.2.4",
     "react-beautiful-dnd": "^10.0.2",
     "react-icons": "^3.2.0",
+    "react-select": "^2.1.2",
     "typescript": "^3.1.1"
   }
 }

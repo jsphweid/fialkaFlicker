@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { observer } from 'mobx-react'
 import { getStores } from '../../stores/index'
+import { FrameType } from '../../types'
 
 @observer
 export default class Canvas extends React.Component {
@@ -22,8 +23,11 @@ export default class Canvas extends React.Component {
     if (!this.ctx || stopped) return
 
     window.requestAnimationFrame(this.draw)
+    const currentFrame = getStores().chunksStore.getCurrentFrame()
+    if (currentFrame.type === FrameType.SolidColor) {
+      this.ctx.fillStyle = currentFrame.color
+    }
 
-    this.ctx.fillStyle = '#FF0000'
     this.ctx.fillRect(0, 0, canvasWidth, canvasHeight)
   }
 

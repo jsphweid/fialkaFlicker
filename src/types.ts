@@ -1,21 +1,30 @@
-export enum ChunkType {
+export enum FrameType {
   SolidColor = 'Solid Color',
   Video = 'Video'
 }
 
-export interface BaseChunk {
-  frameCount: number
-  type: ChunkType
+export interface Chunk {
+  count: number
+  frame: Frame
 }
 
-export type Chunk = SolidColorChunk | VideoChunk
+export interface BaseFrame {
+  type: FrameType
+}
 
-export interface SolidColorChunk extends BaseChunk {
+export type Frame = SolidColorFrame | VideoFrame
+
+export interface SolidColorFrame extends BaseFrame {
   color: string
-  type: ChunkType.SolidColor
+  type: FrameType.SolidColor
 }
 
-export interface VideoChunk extends BaseChunk {
-  videoTitle: string // remove
-  type: ChunkType.Video
+export interface VideoFrame extends BaseFrame {
+  loaded: false
+  type: FrameType.Video
+}
+
+export interface Loop {
+  frames: Frame[]
+  size: number
 }

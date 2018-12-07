@@ -25,3 +25,20 @@
   margin: 0 !important;
   padding: 0 8px;
 }
+
+.ff-chunk-close {
+  cursor: pointer;
+  svg {
+    margin-top: 4px;
+  }
+}
+
+.ff-chunk-count {
+  input {
+    max-width: 40px;
+  }
+}
+
+.ff-newChunk-input {
+  width: 200px;
+}
