@@ -18,7 +18,7 @@ class FpsControlledLoop {
     this.callback = callback
   }
 
-  private loop(timestamp: number) {
+  private loop = (timestamp: number) => {
     if (!this.time) {
       this.time = timestamp
     }
@@ -33,21 +33,21 @@ class FpsControlledLoop {
     this.tref = requestAnimationFrame(this.loop)
   }
 
-  public setNewFrameRate(newfps: number) {
+  public setNewFrameRate = (newfps: number) => {
     this.fps = newfps
     this.delay = 1000 / this.fps
     this.frameIndex = -1
     this.time = null
   }
 
-  public start() {
+  public start = () => {
     if (!this.isPlaying) {
       this.isPlaying = true
       this.tref = requestAnimationFrame(this.loop)
     }
   }
 
-  public pause() {
+  public pause = () => {
     if (this.isPlaying && this.tref) {
       cancelAnimationFrame(this.tref)
       this.isPlaying = false
@@ -60,29 +60,29 @@ class FpsControlledLoop {
 @observer
 export default class Canvas extends React.Component {
   private ctx: CanvasRenderingContext2D | null = null
-  // private controlledLoop: FpsControlledLoop
+  private controlledLoop: FpsControlledLoop
 
   constructor(props: any) {
     super(props)
-    // this.controlledLoop = new FpsControlledLoop(30, this.draw)
+    this.controlledLoop = new FpsControlledLoop(30, this.draw)
+    getStores().canvasMetadataStore.setStartStop(
+      this.controlledLoop.start,
+      this.controlledLoop.pause
+    )
+    getStores().canvasMetadataStore.setFpsUpdater(
+      this.controlledLoop.setNewFrameRate
+    )
   }
 
   public componentDidMount() {
     const canvas = this.refs.canvas as HTMLCanvasElement
     this.ctx = canvas.getContext('2d')
-    // window.requestAnimationFrame(this.draw)
-    getStores().canvasMetadataStore.setKickoff(this.draw)
   }
 
   private draw = () => {
-    const {
-      canvasWidth,
-      canvasHeight,
-      stopped
-    } = getStores().canvasMetadataStore
-    if (!this.ctx || stopped) return
+    const { canvasWidth, canvasHeight } = getStores().canvasMetadataStore
+    if (!this.ctx) return
 
-    window.requestAnimationFrame(this.draw)
     const currentFrame = getStores().chunksStore.getCurrentFrame()
     if (currentFrame.type === FrameType.SolidColor) {
       this.ctx.fillStyle = currentFrame.color

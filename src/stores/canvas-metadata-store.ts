@@ -42,17 +42,29 @@ export default class CanvasMetadataStore {
   }
 
   @action
+  public setFpsUpdater = (updater: Function): void => {
+    reaction(
+      () => this._fps,
+      fps => {
+        updater(fps)
+      }
+    )
+  }
+
+  @action
   public toggleStop = (): void => {
     this._stopped = !this._stopped
   }
 
   @action
-  public setKickoff = (fn: Function): void => {
+  public setStartStop = (start: Function, stop: Function): void => {
     reaction(
       () => this._stopped,
       stopped => {
-        if (!stopped) {
-          fn()
+        if (stopped) {
+          stop()
+        } else {
+          start()
         }
       }
     )
