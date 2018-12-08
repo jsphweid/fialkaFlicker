@@ -3,6 +3,7 @@ import { getStores } from '../../stores'
 import { Chunk, FrameType } from '../../types'
 import { MdDragHandle, MdClose } from 'react-icons/md'
 import { observer } from 'mobx-react'
+import { extractFramesFromVideo } from '../../helpers'
 
 export interface ChunkProps {
   chunk: Chunk
@@ -37,6 +38,27 @@ export default class ChunkDisplay extends React.Component<ChunkProps> {
     ]
   }
 
+  private renderUpload() {
+    const { chunk } = this.props
+    const { frame } = chunk
+    if (frame.type !== FrameType.Video) return null
+
+    return (
+      <input
+        type="file"
+        id="myFile"
+        size={50}
+        onChange={async e => {
+          console.log('file', e)
+          const { files } = e.currentTarget
+          if (!files) return
+          const frames = await extractFramesFromVideo(files[0])
+          console.log('hi', e)
+        }}
+      />
+    )
+  }
+
   public render() {
     const { chunk, dragHandleProps } = this.props
     const { frame, count } = chunk
@@ -62,6 +84,7 @@ export default class ChunkDisplay extends React.Component<ChunkProps> {
           />
         </li>
         {this.renderColor()}
+        {this.renderUpload()}
       </ul>
     )
   }
