@@ -71,14 +71,17 @@ export async function extractFramesFromVideo(file: File, fps = 25) {
       let currentTime = 0
 
       while (currentTime < duration && context) {
-        console.log('going')
+        console.log('going', currentTime)
         video.currentTime = currentTime
+        console.log('1')
         await new Promise(r => (seekResolve = r))
-
+        console.log('2')
         context.drawImage(video, 0, 0, w, h)
+        console.log('3')
         let base64ImageData = canvas.toDataURL()
+        console.log('4')
         frames.push(base64ImageData)
-
+        console.log('5')
         currentTime += interval
       }
       debugger
